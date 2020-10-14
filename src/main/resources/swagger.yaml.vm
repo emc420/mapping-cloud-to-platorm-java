@@ -1,0 +1,344 @@
+openapi: "3.0.0"
+info:
+  version: ${project.version}
+  title: Java ontology mapping library
+  description: >
+    Defines the endpoint that will return transformed UpMessage as per the list of Operations
+servers:
+  - url: http://localhost:8080/
+tags:
+  - name: Operation
+    description: >
+      Message transformation as per the Operations
+paths:
+  /up-apply:
+    post:
+      summary: apply the list of operations on Up Message
+      operationId: applyOperations
+      tags:
+        - Operation
+      requestBody:
+        description: returns a transformed UpMessage with respect to what is defined in the operations
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpApplyOperations'
+      responses:
+        '202':
+          description: Full representation of the created thing resource
+        '401':
+          $ref: '#/components/responses/unauthorized'
+        '409':
+          $ref: '#/components/responses/conflict'
+        default:
+          $ref: '#/components/responses/error'
+  /down-apply:
+    post:
+      summary: apply the list of operations on Down Message
+      operationId: applyOperationsDown
+      tags:
+        - Operation
+      requestBody:
+        description: returns a transformed DownMessage with respect to what is defined in the operations
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DownApplyOperations'
+      responses:
+        '202':
+          description: Full representation of the created thing resource
+        '401':
+          $ref: '#/components/responses/unauthorized'
+        '409':
+          $ref: '#/components/responses/conflict'
+        default:
+          $ref: '#/components/responses/error'
+
+components:
+  schemas:
+    DownApplyOperations:
+      type: object
+      required:
+        - message
+        - operationsDown
+      properties:
+        message:
+          type: object
+          description: DownMessage
+          x-is-object-schema: true
+        operationsDown:
+          $ref: '#/components/schemas/DownOperations'
+    DownOperations:
+      type: array
+      items:
+        $ref: '#/components/schemas/DownOperation'
+      description: >
+        All operations that will be applied
+    DownOperation:
+      type: object
+      required:
+        - op
+      properties:
+        op:
+          type: string
+          description: Name of the operation
+          x-is-discriminator: true
+      discriminator:
+        propertyName: op
+        mapping:
+          extractDriverMessage: '#/components/schemas/DownExtractDriverMessage'
+          updateCommand: '#/components/schemas/DownUpdateCommand'
+      description: >
+        The latest values of all operations
+    DownUpdateCommand:
+      allOf:
+        - $ref: '#/components/schemas/DownOperation'
+        - type: object
+          required:
+            - commands
+          properties:
+            commands:
+              $ref: '#/components/schemas/updateCommands'
+    updateCommands:
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/updateCommand'
+      description: >
+        The list of points that needs to be updated
+    updateCommand:
+      description: >
+        The command object
+      type: object
+      properties:
+        id:
+            description: The identifier of the command
+            type: string
+        input:
+            description: The input of the message in the json format
+            x-is-json-schema: true
+    DownExtractDriverMessage:
+      allOf:
+        - $ref: '#/components/schemas/DownOperation'
+        - type: object
+          required:
+            - commands
+          properties:
+            commands:
+              $ref: '#/components/schemas/extractCommands'
+    extractCommands:
+      additionalProperties:
+        x-is-json-schema: true
+      description: >
+        The list of points that needs to be updated\
+    UpApplyOperations:
+      type: object
+      required:
+        - message
+        - operations
+      properties:
+        message:
+          type: object
+          description: UpMessage
+          x-is-object-schema: true
+        operations:
+          $ref: '#/components/schemas/UpOperations'
+    UpOperations:
+      type: array
+      items:
+        $ref: '#/components/schemas/UpOperation'
+      description: >
+        All operations that will be applied
+    UpOperation:
+      type: object
+      required:
+        - op
+      properties:
+        op:
+          type: string
+          description: Name of the operation
+          x-is-discriminator: true
+      discriminator:
+        propertyName: op
+        mapping:
+          extractPoints: '#/components/schemas/UpExtractPoints'
+          updatePoints: '#/components/schemas/UpUpdatePoints'
+          filter: '#/components/schemas/UpFilterOperation'
+          filterPoints: '#/components/schemas/UpFilterPointsOperation'
+      description: >
+        The latest values of all operations
+    UpFilterPointsOperation:
+          allOf:
+            - $ref: '#/components/schemas/UpOperation'
+            - type: object
+              required:
+                - points
+              properties:
+                points:
+                  type: array
+                  items:
+                    type: string
+                  description: The list of points to be filtered.
+    UpFilterOperation:
+      allOf:
+        - $ref: '#/components/schemas/UpOperation'
+        - type: object
+          properties:
+            keepDeviceUplink:
+              type: boolean
+              description: whether to keep device uplink
+            keepDeviceDownlinkSent:
+              type: boolean
+              description: whether to keep device downlink sent
+            keepDeviceLocation:
+              type: boolean
+              description: whether to keep device location
+            keepDeviceNotification:
+              type: boolean
+              description: whether to keep device notification
+            keepDeviceNotificationSubTypes:
+              type: array
+              items:
+                type: string
+              description: whether to keep device notification sub types
+    UpExtractPoints:
+      allOf:
+        - $ref: '#/components/schemas/UpOperation'
+        - type: object
+          required:
+            - points
+          properties:
+            points:
+              $ref: '#/components/schemas/points'
+    UpUpdatePoints:
+      allOf:
+        - $ref: '#/components/schemas/UpOperation'
+        - type: object
+          required:
+            - points
+          properties:
+            points:
+              $ref: '#/components/schemas/updatePoints'
+    updatePoints:
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/updatePoint'
+      description: >
+        The list of points that needs to be updated
+    updatePoint:
+        type: object
+        properties:
+          ontologyId:
+            type: string
+            description: The ontologyId of a point
+          value:
+            type: string
+            description: The value is a Jmespath expression that will retrieve the actual value from the upMessage
+          coordinates:
+            type: object
+            description: The value is a array of Jmespath expression that will retrieve the actual values from the upMessage
+          eventTime:
+            type: string
+            description: This is a Jmespath expression that will retrieve the actual event time value from the upMessage
+          type:
+            $ref: '#/components/schemas/jmesPathPointType'
+          unitId:
+            $ref: '#/components/schemas/pointUnitId'
+        description: >
+           The update point json
+    points:
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/jmesPathPoint'
+      description: >
+        The array of points
+    jmesPathPoint:
+        required:
+         - eventTime
+        type: object
+        properties:
+          ontologyId:
+            type: string
+            description: The ontologyId of a point
+          value:
+            type: string
+            description: The value is a Jmespath expression that will retrieve the actual value from the upMessage
+          coordinates:
+            type: object
+            description: The value is a array of Jmespath expression that will retrieve the actual values from the upMessage
+          eventTime:
+            type: string
+            description: This is a Jmespath expression that will retrieve the actual event time value from the upMessage
+          type:
+            $ref: '#/components/schemas/jmesPathPointType'
+          unitId:
+            $ref: '#/components/schemas/pointUnitId'
+        description: >
+           The point json
+    jmesPathPointType:
+      type: string
+      description: The type of the values of this point
+      enum:
+        - string
+        - int64
+        - double
+        - obix
+        - xml
+        - boolean
+        - object
+    pointUnitId:
+      type: string
+      description: The unitId of the point
+    errorInfo:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Provides an internal error code if any
+        message:
+          type: string
+          description: Provides a message describing the error
+  responses:
+    badRequest:
+      description: The received request body is badly formatted or contains bad values
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/errorInfo'
+    unauthorized:
+      description: The user is not authorized to access the resource
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/errorInfo'
+    notActivated:
+      description: The service is not activated for the current user
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/errorInfo'
+    notFound:
+      description: The service is not activated for the current user or the resource does not exist
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/errorInfo'
+    conflict:
+      description: The resource already exists with the given id
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/errorInfo'
+    mediaUnsupported:
+      description: The received media type is not supported
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/errorInfo'
+    error:
+      description: Any error when processing the request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/errorInfo'
