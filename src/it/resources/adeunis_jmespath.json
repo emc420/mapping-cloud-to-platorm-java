@@ -1,0 +1,6 @@
+{
+  "type": "productConfigurationRequestFrame",
+  "payload": {
+    "transmissionPeriodOfTheStatusPeriod": "{{ command.input }}"
+  }
+}

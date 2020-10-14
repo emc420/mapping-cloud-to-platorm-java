@@ -1,0 +1,141 @@
+{
+  "id": "00000000-000000-00000-000000000",
+  "time": "2020-06-16T20:00:00.000Z",
+  "type": "deviceUplink",
+  "origin": {
+    "type": "binder",
+    "id": "tpw",
+    "connectionId": "1",
+    "time": "2015-07-09T16:06:38.490+02:00"
+  },
+  "content": {
+  },
+  "subAccount": {
+    "id": "subAccount1",
+    "realmId": "subRealm1"
+  },
+  "subscriber": {
+    "id": "100000507",
+    "realmId": "tpx-users-iot-ope"
+  },
+  "thing": {
+    "key": "lorawan:000000000F1D8693"
+  },
+  "points": {
+    "coordinates": {
+      "ontologyId": "Geolocation:1:coordinates",
+      "records": [
+        {
+          "eventTime": "2020-06-16T19:59:55.000Z",
+          "coordinates": [
+            7.0586624,
+            43.6618752
+          ]
+        }
+      ]
+    },
+    "horizontalAccuracy": {
+      "ontologyId": "Geolocation:1:horizontalAccuracy",
+      "records": [
+        {
+          "eventTime": "2020-06-16T19:59:55.000Z",
+          "value": 19.0
+        }
+      ],
+      "type": "double",
+      "unitId": "m"
+    },
+    "rawPositionType": {
+      "records": [
+        {
+          "eventTime": "2020-06-16T19:59:55.000Z",
+          "value": "GPS"
+        }
+      ],
+      "type": "string"
+    },
+    "trackingMode": {
+      "records": [
+        {
+          "eventTime": "2020-06-16T20:00:00.000Z",
+          "value": "PERMANENT_TRACKING"
+        }
+      ],
+      "type": "string"
+    },
+    "batteryLevel": {
+      "ontologyId": "PowerConfiguration:1:batteryPercentageRemaining",
+      "records": [
+        {
+          "eventTime": "2020-06-16T20:00:00.000Z",
+          "value": "95"
+        }
+      ],
+      "type": "double",
+      "unitId": "%"
+    },
+    "batteryStatus": {
+      "records": [
+        {
+          "eventTime": "2020-06-16T20:00:00.000Z",
+          "value": "OPERATING"
+        }
+      ],
+      "type": "string"
+    },
+    "temperatureMeasure": {
+      "ontologyId": "TemperatureMeasurement:1:measuredValue",
+      "records": [
+        {
+          "eventTime": "2020-06-16T20:00:00.000Z",
+          "value": 25.8
+        }
+      ],
+      "type": "double",
+      "unitId": "Cel"
+    },
+    "sosFlag": {
+      "records": [
+        {
+          "eventTime": "2020-06-16T20:00:00.000Z",
+          "value": true
+        }
+      ],
+      "type": "boolean"
+    },
+    "dynamicMotionState": {
+      "records": [
+        {
+          "eventTime": "2020-06-16T20:00:00.000Z",
+          "value": "STATIC"
+        }
+      ],
+      "type": "string"
+    }
+  },
+  "packet": {
+    "type": "lorawan",
+    "message": {
+      "gpsLatitude": 43.6618752,
+      "gpsLongitude": 7.0586624,
+      "horizontalAccuracy": 19,
+      "messageType": "POSITION_MESSAGE",
+      "age": 5,
+      "trackingMode": "PERMANENT_TRACKING",
+      "batteryLevel": 95,
+      "batteryStatus": "OPERATING",
+      "ackToken": 8,
+      "rawPositionType": "GPS",
+      "periodicPosition": false,
+      "temperatureMeasure": 25.8,
+      "sosFlag": 1,
+      "appState": 1,
+      "dynamicMotionState": "STATIC",
+      "onDemand": false,
+      "payload": "03585f8a80001a064604351105dfd3af"
+    },
+    "meta": {
+      "fPort": 5
+    }
+  }
+}

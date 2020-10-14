@@ -1,0 +1,83 @@
+{
+  "message": {
+    "id": "00000000-000000-00000-000000000",
+    "time": "2020-01-01T10:00:00.000Z",
+    "subAccount": {
+      "id": "subAccount1",
+      "realmId": "subRealm1"
+    },
+    "origin": {
+      "type": "binder",
+      "id": "tpw",
+      "connectionId": "1",
+      "time": "2015-07-09T16:06:38.49+02:00"
+    },
+    "content": {
+    },
+    "type": "deviceUplink",
+    "thing": {
+      "key": "lorawan:000000000F1D8693"
+    },
+    "subscriber": {
+      "id": "100000507",
+      "realmId": "tpx-users-iot-ope"
+    },
+    "packet": {
+      "type": "lorawan",
+      "meta": {
+        "fPort": 5
+      },
+      "message": {
+        "firmwareType": "SenlabT",
+        "id": "datalog_transmission",
+        "measures": [
+          {
+            "id": "temperature",
+            "timestamp": 1580980445688,
+            "value": 11.625,
+            "time": "2020-02-06T09:14:05.688Z"
+          },
+          {
+            "id": "temperature",
+            "timestamp": 1580980545688,
+            "value": 11.625,
+            "time": "2020-02-06T09:15:45.688Z"
+          },
+          {
+            "id": "temperature",
+            "timestamp": 1580980645688,
+            "value": 11.6875,
+            "time": "2020-02-06T09:17:25.688Z"
+          },
+          {
+            "id": "battery_current_level",
+            "timestamp": 1580980695688,
+            "value": 30,
+            "time": "2020-02-06T09:18:15.688Z"
+          }
+        ],
+        "parameters": [],
+        "events": []
+      }
+    }
+  },
+  "operations": [
+    {
+      "op": "extractPoints",
+      "points": {
+        "temperature": {
+          "value": "{{=<% %>=}}{{packet.message.measures[?id == 'temperature'].value}}<%={{ }}=%>",
+          "eventTime": "{{=<% %>=}}{{packet.message.measures[?id == 'temperature'].time}}<%={{ }}=%>",
+          "type": "double",
+          "unitId": "Cel"
+        },
+        "battery_current_level": {
+          "value": "{{=<% %>=}}{{packet.message.measures[?id == 'battery_current_level'].value}}<%={{ }}=%>",
+          "eventTime": "{{=<% %>=}}{{packet.message.measures[?id == 'battery_current_level'].time}}<%={{ }}=%>",
+          "type": "double",
+          "unitId": "%RH"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "message": {
+    "id": "00000000-000000-00000-000000000",
+    "type": "deviceDownlink",
+    "time": "2020-06-16T20:00:00.000Z",
+    "origin": {
+      "type": "connector",
+      "id": "aws-iot",
+      "connectionId": "1",
+      "time": "2015-07-09T16:06:38.49+02:00"
+    },
+    "content": {
+      "DevEUI": "000000000F1D8693",
+      "FPort": 1,
+      "Payload": "00",
+      "AS_ID": "app1.sample.com",
+      "Time": "2016-01-11T14:28:00.333+02:00",
+      "CorrelationID": "4434704901C7450B",
+      "Token": "ea8f31d2299cbece8e180a3012766c4df15fe3cf2e142d9fdf4035b5894ec886"
+    },
+    "command": {
+      "id": "setTransmissionFrameStatusPeriod",
+      "input": 5
+    },
+    "subscriber": {
+      "id": "100000507",
+      "realmId": "tpx-users-iot-ope"
+    },
+    "thing": {
+      "key": "lorawan:000000000F1D8693"
+    },
+    "packet": {
+      "type": "lorawan",
+      "meta": {
+        "fPort": 1
+      },
+      "raw": "00"
+    }
+  },
+  "operationsDown": [
+    {
+      "op": "extractDriverMessage",
+      "commands": {
+        "setTransmissionFrameStatusPeriod": {
+          "type": "productConfigurationRequestFrame",
+          "payload": {
+            "transmissionPeriodOfTheStatusPeriod": "{{ command.input }}"
+          }
+        }
+      }
+    }
+  ]
+}

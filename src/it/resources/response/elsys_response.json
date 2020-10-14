@@ -1,0 +1,67 @@
+{
+  "id": "00000000-000000-00000-000000000",
+  "time": "2020-01-01T10:00:00.000Z",
+  "type": "deviceUplink",
+  "origin": {
+    "type": "binder",
+    "id": "tpw",
+    "connectionId": "1",
+    "time": "2015-07-09T16:06:38.490+02:00"
+  },
+  "content": {
+  },
+  "subAccount": {
+    "id": "subAccount1",
+    "realmId": "subRealm1"
+  },
+  "subscriber": {
+    "id": "100000507",
+    "realmId": "tpx-users-iot-ope"
+  },
+  "thing": {
+    "key": "lorawan:000000000F1D8693"
+  },
+  "points": {
+    "light": {
+      "type": "double",
+      "unitId": "lx",
+      "records": [
+        {
+          "value": 39,
+          "eventTime": "2020-01-01T10:00:00.000Z"
+        }
+      ]
+    },
+    "temperature": {
+      "type": "double",
+      "unitId": "Cel",
+      "records": [
+        {
+          "value": 22.6,
+          "eventTime": "2020-01-01T10:00:00.000Z"
+        }
+      ]
+    },
+    "humidity": {
+      "type": "double",
+      "unitId": "%RH",
+      "records": [
+        {
+          "value": 41,
+          "eventTime": "2020-01-01T10:00:00.000Z"
+        }
+      ]
+    }
+  },
+  "packet": {
+    "type": "lorawan",
+    "message": {
+      "temperature": 22.6,
+      "humidity": 41,
+      "light": 39
+    },
+    "meta": {
+      "fPort": 5
+    }
+  }
+}

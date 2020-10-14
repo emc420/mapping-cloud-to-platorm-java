@@ -1,0 +1,19 @@
+{
+  "gpsLatitude": 43.6618752,
+  "gpsLongitude": 7.0586624,
+  "horizontalAccuracy": 19,
+  "messageType": "POSITION_MESSAGE",
+  "age": 5,
+  "trackingMode": "PERMANENT_TRACKING",
+  "batteryLevel": 95,
+  "batteryStatus": "OPERATING",
+  "ackToken": 8,
+  "rawPositionType": "GPS",
+  "periodicPosition": false,
+  "temperatureMeasure": 25.8,
+  "sosFlag": 1,
+  "appState": 1,
+  "dynamicMotionState": "STATIC",
+  "onDemand": false,
+  "payload": "03585f8a80001a064604351105dfd3af"
+}

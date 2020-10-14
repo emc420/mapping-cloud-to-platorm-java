@@ -1,0 +1,44 @@
+*******************************************************************************
+* ontology-mapping-java-lib changelog
+*******************************************************************************
+
+
+Version : 1.0.0
+Date    : 2020-xx-xx
+
+
+New Features:
+-------------
+ID        : RDTX-2359
+Desc      : Rework jmespath operations in ontology mapping library
+
+ID        : RDTX-2350
+Desc      : Create a points filter operation in ontology mapping
+
+ID        : RDTX-2348
+Desc      : Map abeeway uplinks to basic ontology
+
+ID        : RDTX-2349
+Desc      : Create a filter operation in ontology mapping
+
+ID        : RDTX-2338
+Desc      : Add ontology id for points in ontology mapping library
+
+ID        : RDTX-2317
+Desc      : Support commands in ontology mapping library
+
+ID        : RDTX-2298
+Desc      : Add abeeway position message to the list of ontology mapping examples
+
+ID        : RDTX-2287
+Desc      : Expose ontology mapping as a service for demos
+
+ID        : RDTX-2243
+Desc      : Implement jmespath operation
+
+
+Fixed Bugs:
+-------------
+N/A
+
+

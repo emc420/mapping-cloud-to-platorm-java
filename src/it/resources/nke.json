@@ -1,0 +1,34 @@
+{
+  "EndPoint": 0,
+  "Report": "Standard",
+  "CommandID": "ReportAttributes",
+  "ClusterID": "TIC_CBE",
+  "AttributeID": "Attribute_0",
+  "AttributeType": "ByteString",
+  "Data": {
+    "TICFieldList": {
+      "DescHeader": {
+        "Obsolete": "No",
+        "Report": "Standard",
+        "PresentField": "DescVarBitfield",
+        "SizeOf": 0
+      },
+      "BitField": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        248,
+        0
+      ],
+      "BBRHCJB": 123456789,
+      "BBRHPJB": 999999999,
+      "BBRHCJW": 999999999,
+      "BBRHPJW": 999999999,
+      "BBRHCJR": 999999999,
+      "BBRHPJR": 999999999
+    }
+  },
+  "Cause": []
+}

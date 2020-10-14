@@ -1,0 +1,62 @@
+{
+  "message": {
+    "id": "00000000-000000-00000-000000000",
+    "time": "2020-01-01T10:00:00.000Z",
+    "subAccount": {
+      "id": "subAccount1",
+      "realmId": "subRealm1"
+    },
+    "origin": {
+      "type": "binder",
+      "id": "tpw",
+      "connectionId": "1",
+      "time": "2015-07-09T16:06:38.49+02:00"
+    },
+    "content": {
+    },
+    "type": "deviceUplink",
+    "thing": {
+      "key": "lorawan:000000000F1D8693"
+    },
+    "subscriber": {
+      "id": "100000507",
+      "realmId": "tpx-users-iot-ope"
+    },
+    "packet": {
+      "type": "lorawan",
+      "meta": {
+        "fPort": 5
+      },
+      "message": {
+        "temperature": 22.6,
+        "humidity": 41,
+        "light": 39
+      }
+    }
+  },
+  "operations": [
+    {
+      "op": "extractPoints",
+      "points": {
+        "temperature": {
+          "value": "{{=<% %>=}}{{packet.message.temperature}}<%={{ }}=%>",
+          "eventTime": "{{=<% %>=}}{{time}}<%={{ }}=%>",
+          "type": "double",
+          "unitId": "Cel"
+        },
+        "humidity": {
+          "value": "{{=<% %>=}}{{packet.message.humidity}}<%={{ }}=%>",
+          "eventTime": "{{=<% %>=}}{{time}}<%={{ }}=%>",
+          "type": "double",
+          "unitId": "%RH"
+        },
+        "light": {
+          "value": "{{=<% %>=}}{{packet.message.light}}<%={{ }}=%>",
+          "eventTime": "{{=<% %>=}}{{time}}<%={{ }}=%>",
+          "type": "double",
+          "unitId": "lx"
+        }
+      }
+    }
+  ]
+}

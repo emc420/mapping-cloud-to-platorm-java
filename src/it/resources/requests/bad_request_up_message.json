@@ -1,0 +1,27 @@
+{
+  "operations": [
+    {
+      "op": "extractPoints",
+      "points": {
+        "temperature": {
+          "value": "{{packet.message.temperature}}",
+          "eventTime": "{{time}}",
+          "type": "double",
+          "unitId": "Cel"
+        },
+        "humidity": {
+          "value": "{{packet.message.humidity}}",
+          "eventTime": "{{time}}",
+          "type": "double",
+          "unitId": "%RH"
+        },
+        "light": {
+          "value": "{{packet.message.light}}",
+          "eventTime": "{{time}}",
+          "type": "double",
+          "unitId": "lx"
+        }
+      }
+    }
+  ]
+}
