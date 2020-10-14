@@ -1,0 +1,6 @@
+{
+  "id": "newCommand",
+  "input": {
+    "value": "{{ @.input.prop2 }}"
+  }
+}

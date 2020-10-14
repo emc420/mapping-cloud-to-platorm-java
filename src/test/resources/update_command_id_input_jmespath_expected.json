@@ -1,0 +1,8 @@
+{
+  "id": "newCommand",
+  "input": {
+    "value": {
+      "prop3": "value"
+    }
+  }
+}

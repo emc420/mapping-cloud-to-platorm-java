@@ -1,0 +1,11 @@
+{
+  "temperature": {
+    "timestamp": 1580980445688,
+    "id": "firmware"
+  },
+  "battery_current_level": {
+    "timestamp": 1580980695688,
+    "value": 30,
+    "time": "2020-02-06T09:18:15.688Z"
+  }
+}

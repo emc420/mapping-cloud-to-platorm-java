@@ -1,0 +1,21 @@
+{
+  "measures": [
+    {
+      "id": "temperature",
+      "timestamp": 1580980445688,
+      "value": 11.625
+    },
+    {
+      "id": "temperature",
+      "timestamp": 1580980545688,
+      "value": 11.625
+    },
+    {
+      "id": "temperature",
+      "timestamp": 1580980645688,
+      "value": 11.6875
+    }
+  ],
+  "parameters": [],
+  "events": []
+}

@@ -1,0 +1,6 @@
+{
+  "gpsLongitude": [],
+  "age": 5,
+  "messageType": "POSITION_MESSAGE",
+  "rawPositionType": "GPS"
+}

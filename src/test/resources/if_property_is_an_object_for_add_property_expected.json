@@ -1,0 +1,15 @@
+{
+  "prop1": 10,
+  "prop2": {
+    "prop3": "value"
+  },
+  "type": {
+    "onePiece": "Monkey.D.Luuffy",
+    "bleach": "Kurosaki ichigo",
+    "tokyoGhoul": "kaneki",
+    "soulEater": {
+      "protagonist1": "maka",
+      "protagonist1": "soul"
+    }
+  }
+}

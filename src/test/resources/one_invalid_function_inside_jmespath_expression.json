@@ -1,0 +1,11 @@
+{
+  "type1": "productConfigurationRequestFrame",
+  "payload": {
+    "transmissionPeriodOfTheStatusPeriod": "{{ command.input.prop1 }}",
+    "prop2": "value1",
+    "batman": {
+      "support" : "Joker",
+      "prop3": "{{command | add_property(@.input, 'type', @.cat)  }}"
+    }
+  }
+}

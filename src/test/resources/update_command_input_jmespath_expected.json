@@ -1,0 +1,8 @@
+{
+  "id": "myDeviceCommand",
+  "input":{
+    "value": {
+      "prop3": "value"
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "temperature": {
+    "timestamp": 1580980445688,
+    "value": [],
+    "time": []
+  },
+  "battery_current_level": {
+    "timestamp": 1580980695688,
+    "value": [
+      30
+    ],
+    "time": [
+      "2020-02-06T09:14:05.688Z"
+    ]
+  }
+}

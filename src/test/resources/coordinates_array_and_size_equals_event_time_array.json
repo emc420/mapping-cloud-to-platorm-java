@@ -1,0 +1,17 @@
+{
+  "gpsLatitude": [
+    43.6618752,
+    43.6618752
+  ],
+  "gpsLongitude": [
+    7.0586624,
+    7.0586624
+  ],
+  "age": 5,
+  "messageType": "POSITION_MESSAGE",
+  "rawPositionType": "GPS",
+  "time": [
+    "2020-01-01T10:00:05.000Z",
+    "2020-01-01T10:00:05.000Z"
+  ]
+}
