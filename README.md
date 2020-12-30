@@ -1,2 +1,2 @@
-# ontology-java-lib
-Ontology Java Library Actility
+# Mapping
+mapping lib from platform to cloud
